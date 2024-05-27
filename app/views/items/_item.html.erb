@@ -1,18 +1,7 @@
 <%= turbo_stream_from item %>
-<div id="<%= dom_id item %>">
-  <p>
-    <strong>Name:</strong>
-    <%= item.name %>
-  </p>
-
-  <p>
-    <strong>Active:</strong>
-    <%= item.active %>
-  </p>
-
-  <p>
-    <strong>List:</strong>
-    <%= item.list_id %>
-  </p>
-
+<div id="<%= dom_id item %>" class="flex flex-row gap-2" data-controller="item" data-item-url-value="<%= list_item_path(list_id: item.list_id, id: item.id) %>">
+  <div>
+    <%= tag.input(nil, type: :checkbox, checked: !item.active, class: 'checkbox', data: { action: "change->item#toggle" }) %>
+  </div>
+  <%= tag.div(item.name, class: item.active? ? '' : 'line-through', data: { item_target: 'name' }) %>
 </div>

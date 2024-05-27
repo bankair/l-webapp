@@ -32,7 +32,15 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1
   def update
     if @item.update(item_params)
-      redirect_to @item, notice: 'Item was successfully updated.', status: :see_other
+
+      respond_to do |format|
+        format.html do
+          redirect_to list_item_path(list_id: @item.list_id, id: @item.id), notice: 'Item was successfully updated.',
+                                                                            status: :see_other
+        end
+        format.json { head :ok }
+      end
+
     else
       render :edit, status: :unprocessable_entity
     end

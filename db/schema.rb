@@ -16,7 +16,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_27_200359) do
 
   create_table "items", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
-    t.boolean "active"
+    t.boolean "active", default: true
     t.uuid "list_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
