@@ -60,3 +60,5 @@ group :development do
   # gem "spring"
 end
 
+
+gem "solid_queue", "~> 0.3.1"
