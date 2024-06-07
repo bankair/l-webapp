@@ -4,9 +4,8 @@
 
 <div id="lists">
   <% @lists.each do |list| %>
-    <%= render list %>
     <p>
-      <%= link_to "Show this list", list %>
+      <%= link_to list.name, list %>
     </p>
   <% end %>
 </div>
